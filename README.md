@@ -13,7 +13,7 @@ it is depends on [github.com/kenzo0107/backlog](https://github.com/kenzo0107/bac
 package main
 
 import (
-	bls "backlogslackify"
+	bls "github.com/maito1201/backlogslackify
 	"os"
 	"time"
 	"github.com/kenzo0107/backlog"
@@ -77,7 +77,7 @@ main.go
 package main
 
 import (
-	bls "backlogslackify"
+	bls "github.com/maito1201/backlogslackify
 	"encoding/json"
 	"os"
 	"log"
