@@ -1,7 +1,8 @@
 # backlogslackify
 
 ![](./slack.png)
-backlogslacify creates a slack post to announce backlog tickets that match your search criteria(e.g. expired ticket).
+
+**backlogslacify** creates a slack post to announce backlog tickets that match your search criteria(e.g. expired ticket).
 
 it is depends on [github.com/kenzo0107/backlog](https://github.com/kenzo0107/backlog) to use Backlog API.
 
@@ -141,3 +142,6 @@ config.json
 ```
 
 * If the DryRun option is true, the information will not be posted to slack, it will only be displayed to stdout.
+
+## License
+Apache2
