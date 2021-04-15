@@ -213,35 +213,35 @@ func TestNewClient(t *testing.T) {
 }
 
 func TestWeekEnd(t *testing.T) {
-	tests := []struct{
+	tests := []struct {
 		name string
-		in time.Time
+		in   time.Time
 		want string
 	}{
 		{
 			name: "Sunday",
-			in: time.Date(2000, time.January, 2, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.January, 2, 0, 0, 0, 0, time.UTC),
 			want: "2000-01-07",
 		},
 		{
 			name: "Thursday",
-			in: time.Date(2000, time.January, 6, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.January, 6, 0, 0, 0, 0, time.UTC),
 			want: "2000-01-07",
 		},
 		{
 			name: "Friday",
-			in: time.Date(2000, time.January, 7, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.January, 7, 0, 0, 0, 0, time.UTC),
 			want: "2000-01-07",
 		},
 		{
 			name: "Saturday",
-			in: time.Date(2000, time.January, 8, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.January, 8, 0, 0, 0, 0, time.UTC),
 			want: "2000-01-08",
 		},
 	}
 
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T){
+		t.Run(tt.name, func(t *testing.T) {
 			got := weekEnd(tt.in)
 			if got.Format("2006-01-02") != tt.want {
 				t.Errorf("got=%s, want=%s", got.Format("2006-01-02"), tt.want)
@@ -251,25 +251,25 @@ func TestWeekEnd(t *testing.T) {
 }
 
 func TestEndOfMonth(t *testing.T) {
-	tests := []struct{
+	tests := []struct {
 		name string
-		in time.Time
+		in   time.Time
 		want string
 	}{
 		{
 			name: "First Of Month",
-			in: time.Date(2000, time.February, 1, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.February, 1, 0, 0, 0, 0, time.UTC),
 			want: "2000-02-29",
 		},
 		{
 			name: "EndOfMonth",
-			in: time.Date(2000, time.February, 29, 0, 0, 0, 0, time.UTC),
+			in:   time.Date(2000, time.February, 29, 0, 0, 0, 0, time.UTC),
 			want: "2000-02-29",
 		},
 	}
 
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T){
+		t.Run(tt.name, func(t *testing.T) {
 			got := endOfMonth(tt.in)
 			if got.Format("2006-01-02") != tt.want {
 				t.Errorf("got=%s, want=%s", got.Format("2006-01-02"), tt.want)
