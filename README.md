@@ -69,7 +69,7 @@ func main() {
 }
 ```
 
-* json or something to avoid hard code is recomended.
+* To keep your API keys safe, We recommend using json or something avoiding hard-code.
 
 main.go
 
@@ -130,3 +130,5 @@ config.json
     ]
 }
 ```
+
+* If the DryRun option is true, the information will not be posted to slack, it will only be displayed to stdout.
