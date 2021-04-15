@@ -198,7 +198,7 @@ func TestNewClient(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			testTime := time.Date(2000, time.January, 1, 0, 0, 0, 0, time.UTC)
-			got, err := NewClient(tt.opts, testTime)
+			got, err := newClient(tt.opts, testTime)
 			if err != nil && !errors.Is(err, tt.wantErr) {
 				t.Fatal(err)
 			}

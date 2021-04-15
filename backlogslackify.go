@@ -64,9 +64,17 @@ type Client struct {
 	dryRun           bool
 }
 
-// NewClient returns client while validating ClientOption parameters.
+// Post creates slackPost while validating ClientOption parameters.
 // input ClientOption and reference time like time.Now()
-func NewClient(opts ClientOption, t time.Time) (*Client, error) {
+func Post(opts ClientOption, t time.Time) error {
+	cl, err := newClient(opts, t)
+	if err != nil {
+		return err
+	}
+	return cl.execute()
+}
+
+func newClient(opts ClientOption, t time.Time) (*Client, error) {
 	if opts.BacklogApiKey == "" {
 		return nil, ErrNoApiKey
 	}
@@ -110,8 +118,7 @@ func NewClient(opts ClientOption, t time.Time) (*Client, error) {
 	return &cl, nil
 }
 
-// Post will post informations of backlog ticket to slack
-func (cl *Client) Post() error {
+func (cl *Client) execute() error {
 	var posts []string
 	for _, v := range (*cl).searchConditions {
 		issues, err := cl.fetchIssues(v.Condition)

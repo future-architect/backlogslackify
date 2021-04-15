@@ -25,33 +25,33 @@ func main() {
 		{
 			Name: "Tickets Untreated",
 			Condition: &backlog.GetIssuesOptions{
-           		ProjectIDs: []int{12345},
-            	CategoryIDs: []int{12345, 23456},
-            	StatusIDs: []int{1},
+				ProjectIDs: []int{12345},
+				CategoryIDs: []int{12345, 23456},
+				StatusIDs: []int{1},
 			},
 		},
         {
 			Name: "Tickets Doing",
 			Condition: &backlog.GetIssuesOptions{
-            	ProjectIDs: []int{12345},
-            	CategoryIDs: []int{12345, 23456},
-            	StatusIDs: []int{2},
+				ProjectIDs: []int{12345},
+				CategoryIDs: []int{12345, 23456},
+				StatusIDs: []int{2},
 			},
 		},
         {
 			Name: "Tickets Done(Not Completed)",
 			Condition: &backlog.GetIssuesOptions{
-            	ProjectIDs: []int{12345},
-            	CategoryIDs: []int{12345, 23456},
-            	StatusIDs: []int{3},
+				ProjectIDs: []int{12345},
+				CategoryIDs: []int{12345, 23456},
+				StatusIDs: []int{3},
 			},
 		},
 		{
 			Name: "Tickets Must Complete Today!",
 			Condition: &backlog.GetIssuesOptions{
-            	ProjectIDs: []int{12345},
-            	CategoryIDs: []int{12345, 23456},
-            	StatusIDs: []int{1, 2, 3},
+				ProjectIDs: []int{12345},
+				CategoryIDs: []int{12345, 23456},
+				StatusIDs: []int{1, 2, 3},
 				DueDateUntil: "2021-04-01",
 			},
 		},
@@ -69,13 +69,9 @@ func main() {
 		DryRun: false,
 		SearchConditions: condition,
 	}
-	client, err := bls.NewClient(opts, time.Now())
-	if err != nil {
+	if err := bls.Post(opts, time.Now())
 		log.Fatal(err)
 	} 
-	if err := client.Post(); err != nil {
-		log.Fatal(err)
-	}
 }
 ```
 
@@ -104,13 +100,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	client, err := bls.NewClient(opts, time.Now())
-	if err != nil {
+	if err := bls.Post(opts, time.Now())
 		log.Fatal(err)
 	} 
-	if err := client.Post(); err != nil {
-		log.Fatal(err)
-	}
 }
 ```
 
