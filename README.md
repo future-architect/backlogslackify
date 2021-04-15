@@ -1,7 +1,7 @@
 # backlogslackify
 
 ![](./slack.png)
-backlogslacify makes slack post to announce backlog ticket.
+backlogslacify creates a slack post to announce backlog tickets that match your search criteria(e.g. expired ticket).
 
 it is depends on [github.com/kenzo0107/backlog](https://github.com/kenzo0107/backlog) to use Backlog API.
 
@@ -22,15 +22,15 @@ import (
 func main() {
 	condition := []bls.SearchCondition{
 		{
-			Name: "Ticket Untreated",
+			Name: "Tickets Untreated",
 			Condition: &backlog.GetIssuesOptions{
-            	ProjectIDs: []int{12345},
+           		ProjectIDs: []int{12345},
             	CategoryIDs: []int{12345, 23456},
             	StatusIDs: []int{1},
 			},
 		},
         {
-			Name: "Ticket Doing",
+			Name: "Tickets Doing",
 			Condition: &backlog.GetIssuesOptions{
             	ProjectIDs: []int{12345},
             	CategoryIDs: []int{12345, 23456},
@@ -38,11 +38,20 @@ func main() {
 			},
 		},
         {
-			Name: "Ticket Done(Not Completed)",
+			Name: "Tickets Done(Not Completed)",
 			Condition: &backlog.GetIssuesOptions{
             	ProjectIDs: []int{12345},
             	CategoryIDs: []int{12345, 23456},
             	StatusIDs: []int{3},
+			},
+		},
+		{
+			Name: "Tickets Must Complete Today!",
+			Condition: &backlog.GetIssuesOptions{
+            	ProjectIDs: []int{12345},
+            	CategoryIDs: []int{12345, 23456},
+            	StatusIDs: []int{1, 2, 3},
+				DueDateUntil: "2021-04-01",
 			},
 		},
 	}
