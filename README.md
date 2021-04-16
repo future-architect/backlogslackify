@@ -14,7 +14,7 @@ it is depends on [github.com/kenzo0107/backlog](https://github.com/kenzo0107/bac
 package main
 
 import (
-	bls "github.com/maito1201/backlogslackify
+	bls "github.com/maito1201/backlogslackify"
 	"os"
 	"time"
 	"github.com/kenzo0107/backlog"
@@ -69,7 +69,7 @@ func main() {
 		DryRun: false,
 		SearchConditions: condition,
 	}
-	if err := bls.Post(opts, time.Now())
+	if err := bls.Post(opts, time.Now()); err != nil {
 		log.Fatal(err)
 	} 
 }
@@ -83,7 +83,7 @@ main.go
 package main
 
 import (
-	bls "github.com/maito1201/backlogslackify
+	bls "github.com/maito1201/backlogslackify"
 	"encoding/json"
 	"os"
 	"log"
@@ -100,7 +100,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if err := bls.Post(opts, time.Now())
+	if err := bls.Post(opts, time.Now()); err != nil {
 		log.Fatal(err)
 	} 
 }
