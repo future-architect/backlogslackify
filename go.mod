@@ -1,6 +1,6 @@
 module github.com/maito1201/backlogslackify
 
-go 1.16
+go 1.15
 
 require (
 	github.com/google/go-cmp v0.5.5
