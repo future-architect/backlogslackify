@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/kenzo0107/backlog"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/kenzo0107/backlog"
 )
 
 var (
@@ -153,6 +154,9 @@ func (cl *Client) fetchIssues(condition *backlog.GetIssuesOptions) ([]*backlog.I
 }
 
 func (cl *Client) buildPost(issues []*backlog.Issue, name string) string {
+	if len(issues) == 0 {
+		return ""
+	}
 	msg := []string{"```"}
 	if name != "" {
 		msg = []string{name, "```"}
@@ -182,6 +186,10 @@ func (cl *Client) buildPost(issues []*backlog.Issue, name string) string {
 }
 
 func (cl *Client) post(p string) {
+	if p == "" {
+		fmt.Println("nothing to notify")
+		return
+	}
 	if cl.dryRun {
 		fmt.Println(p)
 	} else {
