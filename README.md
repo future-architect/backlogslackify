@@ -1,4 +1,9 @@
-# backlogslackify
+backlogslackify
+===============
+
+[![Apache-2.0 license](https://img.shields.io/badge/license-Apache2.0-blue.svg)][license]
+
+[license]: https://github.com/future-architect/backlogslackify/blob/master/LICENSE
 
 ![](./slack.png)
 
