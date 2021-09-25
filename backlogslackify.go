@@ -174,10 +174,12 @@ func (cl *Client) buildPost(issues []*backlog.Issue, name string) string {
 			msg = append(msg, fmt.Sprintf("%v/view/%v", cl.backlogBaseUrl, *v.IssueKey))
 		}
 		if v.Summary != nil {
-			msg = append(msg, fmt.Sprintf("%+v", *v.Summary))
+			msg = append(msg, *v.Summary)
 		}
-		if v.Assignee != nil {
-			msg = append(msg, fmt.Sprintf("%+v", *v.Assignee.Name))
+		if v.DueDate != nil && v.Assignee != nil {
+			msg = append(msg, fmt.Sprintf("%v %v", *v.Assignee.Name, *v.DueDate))
+		} else if v.Assignee != nil {
+			msg = append(msg, *v.Assignee.Name)
 		}
 		msg = append(msg, "")
 	}
