@@ -1,4 +1,4 @@
-module github.com/maito1201/backlogslackify
+module github.com/future-architect/backlogslackify
 
 go 1.15
 
